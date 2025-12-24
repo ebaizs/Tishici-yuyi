@@ -1,0 +1,596 @@
+// 英文翻译词典
+const translationMap = {
+    // 设计领域
+    "建筑景观": "architectural landscape",
+    "家装设计": "home decoration design", 
+    "公装设计": "commercial design",
+    "创意绘画": "creative painting",
+    
+    // 主要分类
+    "建筑结构": "architectural structure",
+    "建筑外立面": "building facade",
+    "景观地形": "landscape terrain",
+    "景观植物": "landscape plants",
+    "外部构筑": "external structures",
+    "景观融合": "landscape integration",
+    "景观构筑": "landscape structures",
+    "环境要素": "environmental elements",
+    "景观照明": "landscape lighting",
+    "基础装饰": "basic decoration",
+    "客厅家具": "living room furniture",
+    "餐厅家具": "dining room furniture",
+    "卧室家具": "bedroom furniture",
+    "书房家具": "study room furniture",
+    "厨房设施": "kitchen facilities",
+    "卫浴设施": "bathroom facilities",
+    "装饰物品": "decorative items",
+    "照明系统": "lighting system",
+    "办公空间": "office space",
+    "餐饮空间": "dining space",
+    "酒店空间": "hotel space",
+    "通用装饰": "universal decoration",
+    "办公装饰": "office decoration",
+    "餐饮装饰": "dining decoration",
+    "酒店装饰": "hotel decoration",
+    "办公灯具": "office lighting ",
+    "餐饮灯具": "dining lighting ",
+    "酒店灯具": "hotel lighting ",
+    "自然元素": "natural elements ",
+    "人造元素": "man-made elements ",
+    "生物元素": "biological elements ",
+    "人物元素": "human elements ",
+    
+    // 设计风格
+    "现代主义": "modernism ",
+    "后现代": "postmodern ",
+    "极简": "minimalist ",
+    "工业风": "industrial style ",
+    "新中式": "new Chinese style ",
+    "欧式古典": "European classic ",
+    "日式禅意": "Japanese zen ",
+    "生态自然": "ecological natural ",
+    "未来科技": "future technology ",
+    "现代": "modern ",
+    "北欧": "Nordic ",
+    "法式": "French ",
+    "意式轻奢": "Italian light luxury ",
+    "复古": "retro ",
+    "卡通": "cartoon ",
+    "动漫": "anime ",
+    "3D": "3D ",
+    "素描": "sketch ",
+    "油画": "oil painting ",
+    "水彩": "watercolor ",
+    "写实": "realistic ",
+    "抽象": "abstract ",
+    
+    // 空间类型
+    "建筑外观": "architectural exterior",
+    "景观设计": "landscape design",
+    "公共设施": "public facilities",
+    "住宅小区": "residential community",
+    "公园广场": "park square",
+    "道路桥梁": "roads and bridges",
+    "客厅": "living room",
+    "餐厅": "dining room",
+    "书房": "study room",
+    "卧室": "bedroom",
+    "儿童房": "children's room",
+    "衣帽间": "cloakroom",
+    "厨房": "kitchen",
+    "卫生间": "bathroom",
+    "花园": "garden",
+    "影音室": "audio-visual room",
+    "健身房": "gym",
+    "风景画": "landscape painting",
+    "建筑画": "architectural painting",
+    "人物画": "portrait painting",
+    "抽象画": "abstract painting",
+    
+    // 照明风格
+    "自然采光": "natural lighting",
+    "柔和温暖": "soft and warm",
+    "明亮清晰": "bright and clear",
+    "浪漫氛围": "romantic atmosphere",
+    "高级质感": "high-end texture",
+    "艺术氛围": "artistic atmosphere",
+    "戏剧效果": "dramatic effect",
+    "温馨舒适": "cozy and comfortable",
+    "功能照明": "functional lighting",
+    "自然光": "natural light",
+    "展示灯光": "display lighting",
+    "环境光": "ambient light",
+    "重点照明": "accent lighting",
+    "柔和光": "soft light",
+    "明亮光": "bright light",
+    "戏剧光": "dramatic light",
+    "黄昏光": "twilight light",
+    "夜晚光": "night light",
+    
+    // 建筑结构元素
+    "柱": "column",
+    "梁": "beam",
+    "楼梯": "stairs",
+    "台阶": "steps",
+    "栏杆": "railing",
+    "扶手": "handrail",
+    "挑檐": "overhanging eave",
+    "雨棚": "canopy",
+    "连廊": "corridor",
+    "出入口": "entrance and exit",
+    "钢结构": "steel structure",
+    "坡道": "ramp",
+    "围墙": "fence",
+    "大门": "gate",
+    "门头": "gatehead",
+    "通道": "passage",
+    "车库入口": "garage entrance",
+    "异形造型": "special-shaped structure",
+    
+    // 建筑外立面
+    "玻璃幕墙": "glass curtain wall",
+    "玻璃窗": "glass window",
+    "落地窗": "floor-to-ceiling window",
+    "金属墙板": "metal wall panel",
+    "铝板幕墙": "aluminum plate curtain wall",
+    "石材立面": "stone facade",
+    "瓷砖立面": "tile facade",
+    "抹灰墙": "plastered wall",
+    "涂料墙": "painted wall",
+    "木饰面墙": "wood veneer wall",
+    "百叶窗": "shutters",
+    "外墙装饰条": "exterior wall decorative strip",
+    "广告灯箱": "advertisement light box",
+    "外立面灯光": "facade lighting",
+    
+    // 景观元素
+    "景观围挡": "landscape enclosure",
+    "雕塑装饰": "sculpture decoration",
+    "玻璃雨棚": "glass canopy",
+    "金属格栅": "metal grille",
+    "线条装饰": "line decoration",
+    "水景": "waterscape",
+    "喷泉": "fountain",
+    "鱼池": "fish pond",
+    "大树": "big tree",
+    "花池": "flower bed",
+    "绿化带": "green belt",
+    "硬化路面": "paved road",
+    "鹅卵石路": "cobblestone road",
+    "石板路": "slate road",
+    "地台": "platform",
+    "叠水": "water cascade",
+    "镜面水": "mirror water",
+    "湿地": "wetland",
+    "景观瀑布": "landscape waterfall",
+    "景墙": "landscape wall",
+    "草坪": "lawn",
+    "坡地": "slope",
+    "木平台": "wooden platform",
+    "广场砖": "plaza brick",
+    "乔木": "arbor",
+    "花卉": "flowers",
+    "绿篱": "hedge",
+    "藤蔓植物": "vine plants",
+    "植物墙": "plant wall",
+    "花箱": "flower box",
+    "盆栽": "potted plant",
+    "亭子": "pavilion",
+    "廊架": "gallery frame",
+    "花架": "flower stand",
+    "秋千": "swing",
+    "长凳": "bench",
+    "石凳": "stone bench",
+    "雕塑": "sculpture",
+    "小桥": "small bridge",
+    "栈道": "boardwalk",
+    "景观围栏": "landscape fence",
+    "标识牌": "signage",
+    
+    // 照明设备
+    "路灯": "street lamp",
+    "草坪灯": "lawn lamp",
+    "地埋灯": "buried lamp",
+    "聚光灯": "spotlight",
+    "洗墙灯": "wall washer",
+    "线性灯": "linear light",
+    "泛光灯": "floodlight",
+    
+    // 环境要素
+    "天空": "sky",
+    "云朵": "clouds",
+    "人物": "people",
+    "车辆": "vehicle",
+    "飞鸟": "flying bird",
+    
+    // 室内装饰
+    "顶面": "ceiling",
+    "墙面": "wall",
+    "地面": "floor",
+    "吊顶": "suspended ceiling",
+    "石膏线": "gypsum line",
+    "造型墙": "feature wall",
+    "玻璃门": "glass door",
+    "木门": "wooden door",
+    "窗": "window",
+    "玻璃移门": "sliding glass door",
+    "垭口套": "doorway trim",
+    "瓷砖": "tile",
+    "木地板": "wood floor",
+    "地毯": "carpet",
+    
+    // 家具
+    "沙发": "sofa",
+    "茶几": "coffee table",
+    "电视柜": "TV cabinet",
+    "电视机": "television",
+    "沙发椅": "armchair",
+    "餐桌": "dining table",
+    "餐椅": "dining chair",
+    "椅子": "chair",
+    "展示柜": "display cabinet",
+    "床": "bed",
+    "衣柜": "wardrobe",
+    "书桌": "desk",
+    "书柜": "bookshelf",
+    
+    // 照明
+    "吊灯": "pendant light",
+    "台灯": "table lamp",
+    "落地灯": "floor lamp",
+    "射灯": "spot light",
+    "灯带": "light strip",
+    
+    // 厨房卫浴
+    "橱柜": "cabinet",
+    "灶台": "cooktop",
+    "水槽": "sink",
+    "烟机": "range hood",
+    "马桶": "toilet",
+    "浴缸": "bathtub",
+    "淋浴间": "shower room",
+    "花洒": "shower",
+    "浴室柜": "bathroom vanity",
+    
+    // 装饰物品
+    "挂画": "wall painting",
+    "植物": "plant",
+    "窗帘": "curtain",
+    "配饰": "accessories",
+    
+    // 办公空间
+    "办公桌": "office desk",
+    "办公椅": "office chair",
+    "文件柜": "file cabinet",
+    "储物柜": "storage cabinet",
+    "会议桌": "conference table",
+    "前台": "reception desk",
+    "隔断": "partition",
+    "白板": "whiteboard",
+    "投影仪": "projector",
+    "打印机": "printer",
+    "饮水机": "water dispenser",
+    "绿植": "green plant",
+    "格栅灯": "grid light",
+    "筒灯": "downlight",
+    "LOGO墙": "logo wall",
+    "软包墙": "soft wall",
+    "吸音板": "acoustic panel",
+    "装饰画": "decorative painting",
+    
+    // 餐饮空间
+    "卡座": "booth seat",
+    "吧台": "bar counter",
+    "酒柜": "wine cabinet",
+    "收银台": "cashier counter",
+    "厨房设备": "kitchen equipment",
+    "操作台": "workbench",
+    "冰箱": "refrigerator",
+    "壁灯": "wall lamp",
+    "壁画": "mural",
+    "装饰摆件": "decorative ornaments",
+    "陈列柜": "display cabinet",
+    "天花造型": "ceiling design",
+    
+    // 酒店空间
+    "电梯": "elevator",
+    "客房床": "guest room bed",
+    "梳妆台": "dressing table",
+    "迷你吧": "minibar",
+    "行李架": "luggage rack",
+    "酒店沙发": "hotel sofa",
+    "休闲椅": "lounge chair",
+    "氛围灯": "ambient light",
+    "艺术装置": "art installation",
+    "花艺": "floral art",
+    "镜面": "mirror",
+    "背景墙": "accent wall",
+    "石材装饰面": "stone decorative surface",
+    "装饰线条": "decorative lines",
+    "装饰柱": "decorative column",
+    
+    // 创意绘画元素
+    "太阳": "sun",
+    "月亮": "moon",
+    "星星": "stars",
+    "山": "mountain",
+    "水": "water",
+    "湖泊": "lake",
+    "树木": "trees",
+    "草地": "grass",
+    "花朵": "flowers",
+    "岩石": "rocks",
+    "沙滩": "beach",
+    "雪": "snow",
+    "雨": "rain",
+    "脸部": "face",
+    "头发": "hair",
+    "衣服": "clothing",
+    "手": "hand",
+    "脚": "foot",
+    "眼睛": "eyes",
+    "嘴巴": "mouth",
+    "建筑": "building",
+    "房屋": "house",
+    "门": "door",
+    "道路": "road",
+    "桥梁": "bridge",
+    "船": "boat",
+    "飞机": "airplane",
+    "动物": "animal",
+    "鸟类": "birds",
+    "鱼类": "fish",
+    "昆虫": "insects",
+    
+    // 其他补充词汇
+    "实体墙": "solid wall",
+    "屋顶": "roof",
+    "地基": "foundation",
+    "标识系统": "signage system",
+    "空调设备": "air conditioning equipment",
+    "檐口": "eaves",
+    "女儿墙": "parapet wall",
+    "遮阳板": "sunshade",
+    "百叶": "louver",
+    "门窗套": "door and window casing",
+    "灌木": "shrub",
+    "桥": "bridge",
+    "石头": "stone",
+    "假山": "rockery",
+    "景观灯": "landscape light",
+    "座凳": "bench",
+    "树池": "tree pit",
+    "挡土墙": "retaining wall",
+    "排水沟": "drainage ditch",
+    "公共电话": "public telephone",
+    "自动售货机": "vending machine",
+    "公共卫生间": "public toilet",
+    "母婴室": "nursing room",
+    "无障碍设施": "accessible facilities",
+    "充电桩": "charging pile",
+    "自行车架": "bicycle rack",
+    "住宅楼": "residential building",
+    "儿童游乐场": "children's playground",
+    "健身器材": "fitness equipment",
+    "停车场": "parking lot",
+    "自行车棚": "bicycle shed",
+    "垃圾站": "garbage station",
+    "门卫室": "guard room",
+    "快递柜": "parcel locker",
+    "公告栏": "bulletin board",
+    "水系": "water system",
+    "长廊": "gallery",
+    "人行道": "sidewalk",
+    "自行车道": "bicycle lane",
+    "隔离带": "median strip",
+    "排水系统": "drainage system",
+    "监控系统": "monitoring system",
+    "交通信号灯": "traffic light",
+    "公交站": "bus stop",
+    "休息区": "rest area",
+    "酒店前台": "hotel front desk",
+    "接待区": "reception area",
+    "保险箱": "safe",
+    "等候区": "waiting area",
+    "生物类": "biological category",
+    
+    // 家具数据中的补充词汇
+    "电脑": "computer",
+    "笔筒": "pen holder",
+    "玩具": "toys",
+    "贴画": "stickers",
+    "抱枕": "cushion",
+    "吊饰": "pendant",
+    "挂钩": "hook",
+    "收纳盒": "storage box",
+    "凳子": "stool",
+    "烤箱": "oven",
+    "吊柜": "wall cabinet",
+    "餐具": "tableware",
+    "毛巾架": "towel rack",
+    "桌椅": "table and chairs",
+    "小桌": "small table",
+    "隔音墙": "soundproof wall",
+    "跑步机": "treadmill",
+    "哑铃": "dumbbell",
+    "镜面墙": "mirror wall",
+    "地垫": "floor mat",
+    "动感单车": "spinning bike",
+    "音响": "speaker",
+    
+    // 构图相关
+    "真实的照片": "real photo",
+    "摄影作品": "photography work",
+    "将色块用对应的真实物体代替": "replace color blocks with corresponding real objects",
+    "色块仅代表颜色对应物体的区域": "color blocks only represent the area of the object corresponding to the color",
+    "不代表具体形状": "does not represent specific shape",
+    "为主体": "as the main body",
+    "颜色为": " color is ",
+    "的位置": " position",
+    "风格": " style",
+    "整体构图": "overall composition",
+    "主要元素": "main elements",
+    "次要元素": "secondary elements",
+    "背景环境": "background environment",
+    "构图特点": "composition characteristics",
+    "中心对称构图": "centrosymmetric composition",
+    "焦点突出": "focused highlight",
+    "层次丰富": "rich layers",
+    "元素布局合理": "reasonable element layout",
+    "视觉平衡良好": "good visual balance",
+    "构图协调": "harmonious composition",
+    "高画质": "high quality",
+    "专业摄影风格": "professional photography style",
+    "质感真实": "realistic texture",
+    "细节丰富": "rich details",
+    "左侧": "left side",
+    "中间": "middle",
+    "右侧": "right side",
+    "上部": "upper part",
+    "中部": "middle part",
+    "下部": "lower part",
+    "最左侧": "far left",
+    "最右侧": "far right",
+    "顶部": "top",
+    "底部": "bottom",
+    "中心位置": "center position",
+    "在左侧": "on the left side of",
+    "在右侧": "on the right side of",
+    "在上方": "above",
+    "在下方": "below",
+    
+    // 其他要求选项
+    "其它要求": "other requirements",
+    "必选选项": "required options", 
+    "可选选项": "optional options",
+    "瓷砖地面": "tile floor",
+    "正面视角": "front view",
+    "全景显示": "panoramic view",
+    "木地板地面": "wood floor",
+    "地毯地面": "carpet floor", 
+    "拼花瓷砖地面": "patterned tile floor",
+    "墙面墙板造型": "wall panel design",
+    "垭口套(没有门)": "doorway trim (without door)",
+    "侧面视角": "side view",
+    "俯视角画面": "top view",
+    "仰视角画面": "low angle view",
+    "透视视角": "perspective view",
+    "鸟瞰视角": "bird's eye view",
+    "远景画面": "long shot",
+    "近景画面": "close-up shot",
+    "特写画面": "extreme close-up",
+    "位于": "located at",
+    "占据显著位置": "occupies a prominent position",
+    "辅以": "supplemented by",
+    "构图较为分散": "composition is relatively scattered",
+    "高质量": "high quality",
+    "超高清": "Ultra-high definition",
+    "详细": "detailed",
+    "专业摄影": "professional photography",
+    "良好照明": "good lighting",
+    "真实渲染": "realistic rendering",
+    "通用设计": "universal design",
+    "背景": "background",
+    "前景": "foreground",
+    "中景": "middle ground",
+    "阴影": "shadow",
+    "高光": "highlight",
+    "反射": "reflection",
+
+    // 新增长词组
+    "新中式风格": "new Chinese style",
+    "床头柜": "nightstand",
+    "床头灯": "Bedside lamp",
+    "以为主体": "with as the main body",
+    "中央空调": "central air conditioning",
+    "入厨房玻璃推拉门": "glass sliding door to kitchen",
+    "入阳台垭口套": "balcony doorway trim",
+    "将颜色区域的物体清除": "Clear the objects in the color area",
+    "不再添加其它物体": "No more objects will be added",
+// 介词和连接词
+    "，": ", ",
+    "。": ".",
+    "：": ": ",
+    "；": "; ",
+    "！": "!",
+    "？": "?",
+    "（": "(",
+    "）": ")",
+    "【": "[",
+    "】": "]",
+    "《": "<",
+    "》": ">",
+    "·": "·",
+    "、": ", ",
+    "——": "--"
+};
+
+// 翻译函数
+function simpleTranslateToEnglish(text) {
+    // 按照键的长度从长到短排序，确保长词优先匹配
+    const sortedEntries = Object.entries(translationMap).sort((a, b) => b[0].length - a[0].length);
+    
+    let result = text;
+    
+    // 特殊处理：颜色区域描述的模式匹配和翻译
+    result = translateColorAreaDescriptions(result);
+    
+    // 使用排序后的映射表进行替换
+    for (const [chinese, english] of sortedEntries) {
+        const regex = new RegExp(chinese.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
+        result = result.replace(regex, english);
+    }
+    
+    // 清理和优化英文表达
+    result = optimizeEnglishExpression(result);
+    
+    return result;
+}
+
+// 专门处理颜色区域描述的函数
+function translateColorAreaDescriptions(text) {
+    let result = text;
+    
+    // 模式1: "将#颜色区域的物体清除"
+    const removePattern = /将(#[a-fA-F0-9]{6})颜色区域的物体清除/g;
+    result = result.replace(removePattern, 'remove objects in the $1 color area');
+    
+    // 模式2: "在#颜色区域添加xxx"
+    const addPattern = /在(#[a-fA-F0-9]{6})颜色区域添加([^，,]+)/g;
+    result = result.replace(addPattern, 'add $2 in the $1 color area');
+        
+    return result;
+}
+
+// 优化英文表达，使其更自然
+function optimizeEnglishExpression(text) {
+    let result = text;
+    
+    // 修复重复的冠词
+    result = result.replace(/\b(add|remove) the the\b/g, '$1 the');
+    result = result.replace(/\bin the the\b/g, 'in the');
+    
+    // 修复连续的空格
+    result = result.replace(/\s+/g, ' ');
+    
+    // 确保句首大写
+    if (result.length > 0) {
+        result = result.charAt(0).toUpperCase() + result.slice(1);
+    }
+    
+    // 修复常见的表达问题
+    const optimizations = {
+        'remove objects in the color area': 'clear objects in this area',
+        'add in the color area': 'add to the color area',
+        'color area add': 'add to color area',
+        'area add': 'add to area',
+        'remove objects': 'clear objects'
+    };
+    
+    Object.entries(optimizations).forEach(([from, to]) => {
+        const regex = new RegExp(from.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
+        result = result.replace(regex, to);
+    });
+    
+    return result.trim();
+}
